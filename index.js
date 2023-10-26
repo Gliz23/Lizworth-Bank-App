@@ -9,12 +9,29 @@ const loginSection = document.getElementById('login-area'),
     cashOutInput =document.getElementById('withdraw-input'),
     cashInButton = document.getElementById('deposit-btn'),
     cashOutButton = document.getElementById('withdraw-btn'),
-    submitButton = document.getElementById('submit-btn');
+    submitButton = document.getElementById('submit-btn'),
+    passwordTextBox = document.querySelector('.js-password');
+    emailTextBox = document.querySelector('.js-email');
+    
 
+   
 submitButton.addEventListener('click', () => {
-    loginSection.style.display = 'none';
-    dashboard.classList.remove('d-none');
-})
+    if (passwordTextBox.value === '' || emailTextBox.value === '') {
+        if (passwordTextBox.value === '') {
+            alert('Please enter your password');
+        }
+        if (emailTextBox.value === '') {
+            alert('Please enter your email');
+        }
+    } else {
+        loginSection.style.display = 'none';
+        dashboard.classList.remove('d-none'); 
+    }
+});
+
+
+
+   
 
 cashInButton.addEventListener('click', () => {
     const value = cashInInput.value;
@@ -39,3 +56,29 @@ cashOutButton.addEventListener('click', () => {
         cashOutInput.value = ''
     }
 })
+
+document.body.addEventListener("keydown", (event) => {
+    if (event.key === "d") {
+      document.getElementById("deposit-btn").click();
+    }
+  });
+  
+  document.body.addEventListener("keydown", (event) => {
+    if (event.key === "w") {
+      document.getElementById("withdraw-btn").click();
+    }
+  });
+
+//   if (passwordTextBox.value = ''){
+//         alert('Please enter your password')
+//     }else if (emailTextBox.value = ''){
+//         alert('Please enter your email')
+//     }else{
+//         document.body.addEventListener("keydown", (event) => {
+//             if (event.key === "Enter") {
+//               document.getElementById("submit-btn").click();
+//             }
+//           });
+//     }
+
+  
